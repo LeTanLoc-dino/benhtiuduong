@@ -1,0 +1,101 @@
+{% extends 'home.html' %} {% block body %}
+<h1>Chẩn đoán</h1>
+{% if patients %}
+<form method="post">
+  {% csrf_token %}
+  <!-- Phần thêm dữ liệu -->
+  <fieldset>
+    <legend>Thêm dữ liệu bệnh nhân</legend>
+    <label for="patients">Choose a patient:</label>
+    <select id="patients" name="patients">
+      {% for patient in patients %}
+      <option value="{{ patient.id }}">{{ patient.full_name }}</option>
+      {% endfor %}</select><br />
+    <label for="checkup_date">Checkup Date:</label><br />
+    <input type="date" id="checkup_date" name="checkup_date" required /><br />
+    <label for="blood_pressure">Blood Pressure:</label><br />
+    <input
+      type="text"
+      id="blood_pressure"
+      name="blood_pressure"
+      required
+    /><br />
+    <label for="heart_disease">Heart Disease:</label><br />
+    <input type="checkbox" id="heart_disease" name="heart_disease" /><br />
+    <label for="smoking">Smoking:</label><br />
+    <input type="checkbox" id="smoking" name="smoking" /><br />
+    <label for="bmi">BMI:</label><br />
+    <input type="number" id="bmi" name="bmi" required /><br />
+    <label for="hba1c">HbA1c:</label><br />
+    <input type="number" id="hba1c" name="hba1c" required /><br />
+    <label for="blood_glucose">Blood Glucose:</label><br />
+    <input
+      type="number"
+      id="blood_glucose"
+      name="blood_glucose"
+      required
+    /><br />
+    <button type="submit" name="action" value="add_data">Add Data</button>
+  </fieldset>
+</form>
+<form method="post">
+  <!-- Phần chẩn đoán -->
+  <fieldset>
+    <legend>Chẩn đoán</legend>
+    <label for="patients_for_diagnosis">Choose a patient:</label>
+    <select id="patients_for_diagnosis" name="patients_for_diagnosis">
+      {% for patient in patients %}
+      <option value="{{ patient.id }}">{{ patient.full_name }}</option>
+      {% endfor %}</select
+    ><br />
+    <fieldset>
+      <legend>Chẩn đoán</legend>
+      <label for="blood_pressure">Blood Pressure:</label><br />
+      <input
+        type="number"
+        name="blood_pressure"
+        id="blood_pressure"
+        required
+      /><br />
+
+      <label for="heart_disease">Heart Disease:</label><br />
+      <input type="checkbox" name="heart_disease" id="heart_disease" /><br />
+
+      <label for="smoking">Smoking:</label><br />
+      <input type="checkbox" name="smoking" id="smoking" /><br />
+
+      <label for="bmi">BMI:</label><br />
+      <input type="number" name="bmi" id="bmi" required /><br />
+
+      <label for="hba1c">HbA1c:</label><br />
+      <input type="number" name="hba1c" id="hba1c" required /><br />
+
+      <label for="blood_glucose">Blood Glucose:</label><br />
+      <input
+        type="number"
+        name="blood_glucose"
+        id="blood_glucose"
+        required
+      /><br />
+    </fieldset>
+    <button type="submit" name="action" value="predict">Predict</button>
+    <br />
+    <label for="medical_history">Kết quả dự đoán:</label><br />
+    <input
+      type="text"
+      id="medical_history"
+      name="medical_history"
+      required
+    /><br />
+  </fieldset>
+</form>
+{% if ketqua %}
+<p>Kết quả dự đoán: {{ ketqua }}</p>
+{% else %}
+<p>Chưa có kết quả dự đoán.</p>
+{% endif %}
+<br />
+<a href="/thongtinBN/">Back to Add Patient</a>
+{% else %}
+<p>No patients found</p>
+{% endif %} {% endblock %}
