@@ -98,7 +98,7 @@ def chuandoanBN(request):
     ketqua = None
     patient_id = request.session.get('patient_id', None)
     if request.method == 'POST':
-        model = joblib.load('knn_model.pkl')
+        model = joblib.load('random_forest_model.pkl')
         
         
 
@@ -112,9 +112,12 @@ def chuandoanBN(request):
         HbA1c_level = float(request.POST['HbA1c_level'])
         blood_glucose_level = float(request.POST['blood_glucose_level'])
 
-        # Tạo DataFrame từ dữ liệu nhập vào
-        data = pd.DataFrame([[age, hypertension, heart_disease, bmi, HbA1c_level, blood_glucose_level]],
-                            columns=['age', 'hypertension', 'heart_disease', 'bmi', 'HbA1c_level', 'blood_glucose_level'])
+        # # Tạo DataFrame từ dữ liệu nhập vào
+        # data = pd.DataFrame([[age, hypertension, heart_disease, bmi, HbA1c_level, blood_glucose_level]],
+        #                     columns=['age', 'hypertension', 'heart_disease', 'bmi', 'HbA1c_level', 'blood_glucose_level'])
+
+        data = pd.DataFrame([[age, blood_glucose_level, HbA1c_level, bmi, hypertension, heart_disease]],
+                            columns=['age', 'blood_glucose_level', 'HbA1c_level', 'bmi', 'hypertension','heart_disease'])
 
         # Chạy dữ liệu qua model để dự đoán
         prediction = model.predict(data)
