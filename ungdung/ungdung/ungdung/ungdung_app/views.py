@@ -98,9 +98,9 @@ def chuandoanBN(request):
     ketqua = None
     patient_id = request.session.get('patient_id', None)
     if request.method == 'POST':
-        model = joblib.load('random_forest_model.pkl')
-        
-        
+        model = joblib.load('knn_model.pkl')
+        # model = joblib.load('logreg_model.pkl')
+        # model = joblib.load('random_forest_model.pkl')
 
         # Lấy dữ liệu từ request.POST và chuyển đổi thành kiểu số
         age = float(request.POST['age'])
