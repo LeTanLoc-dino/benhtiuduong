@@ -48,7 +48,7 @@
 
             <div class="input-group">
                 <label for="heart_disease"><i class="fa-solid fa-heart-circle-bolt"></i></label>
-                <input type="radio" id="heart_normal" name="heart_disease" value="0" {% if request.POST.heart_disease == '0' %} checked {% endif %}>
+                <input type="radio" id="heart_normal" name="heart_disease"  value="0" {% if request.POST.heart_disease == '0' %} checked {% endif %}>
                 <label for="heart_normal">Bình thường</label>
                 <input type="radio" id="heart_disease" name="heart_disease" value="1" {% if request.POST.heart_disease == '1' %} checked {% endif %}>
                 <label for="heart_disease">Bất thường</label>
@@ -58,19 +58,19 @@
             <!-- -->
             <div class="input-group">
                 <label for="bmi"><i class="fa-solid fa-chart-line"></i></label>
-                <input type="number" id="bmi" name="bmi" placeholder="Chỉ số BMI" required
+                <input type="number" id="bmi" name="bmi" step="any" min="10" max="99" placeholder="Chỉ số BMI" required
                     value="{{ request.POST.bmi }}">
             </div>
             <!-- -->
             <div class="input-group">
                 <label for="HbA1c_level"><i class="fa-solid fa-square-h"></i></label>
-                <input type="number" id="hba1c" name="HbA1c_level" placeholder="Chỉ số HbA1c" required
+                <input type="number" id="hba1c" name="HbA1c_level" max="9" min="3" step="any" placeholder="Chỉ số HbA1c" required
                     value="{{ request.POST.HbA1c_level }}">
             </div>
             <!-- -->
             <div class="input-group">
                 <label for="blood_glucose_level"><i class="fa-solid fa-chart-simple"></i></label>
-                <input type="number" id="blood-glucose" name="blood_glucose_level" placeholder="Chỉ số Blood Glucose"
+                <input type="number" id="blood-glucose" name="blood_glucose_level" min="80" max="300" placeholder="Chỉ số Blood Glucose"
                     required value="{{ request.POST.blood_glucose_level }}">
             </div>
             <!-- -->

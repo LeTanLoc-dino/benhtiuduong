@@ -736,7 +736,12 @@ header .container nav ul li:nth-last-child(1) {
   font-size: 20px;
   color: #fff;
 }
-
+#blood-glucose{
+  width: 200px;
+}
+#result{
+  width: 320px;
+}
 .patient .container form .input-group input::-webkit-input-placeholder,
 .diagnosis .container form .input-group input::-webkit-input-placeholder {
   color: #fff;
