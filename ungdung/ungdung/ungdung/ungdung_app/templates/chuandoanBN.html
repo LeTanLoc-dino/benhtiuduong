@@ -10,7 +10,7 @@
             {% csrf_token %}
             <h2>THÔNG TIN</h2>
             <!-- -->
-            <div class="input-group">
+            <div class="input-group patients-id" style="display: none;">
                 <label for="patients_id">ID patient:</label>
                 <input type="hidden" name="patients_id" required value="{{ patient_id }}">{{ patient_id }}
             </div>

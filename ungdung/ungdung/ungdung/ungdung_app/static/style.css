@@ -742,6 +742,7 @@ header .container nav ul li:nth-last-child(1) {
 #result{
   width: 320px;
 }
+
 .patient .container form .input-group input::-webkit-input-placeholder,
 .diagnosis .container form .input-group input::-webkit-input-placeholder {
   color: #fff;
